@@ -18,9 +18,11 @@ Learn about dev spaces here: https://www.youtube.com/watch?v=brhxU_kt2HI
 1. Deploy an AKS cluster, set up azure cli and configure kubectl to connect to your cluster following this guide: 
     https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough 
 
-1. Install and configure Azure Dev Spaces for your cluster following this guide: https://docs.microsoft.com/en-us/azure/dev-spaces/how-to/install-dev-spaces 
+1. Install and configure Azure Dev Spaces for your cluster and connect with your local Azure Dev Spaces tooling (azds) to it using the default namespace   following this guide: https://docs.microsoft.com/en-us/azure/dev-spaces/how-to/install-dev-spaces 
 
 1. Install the Azure Dev Spaces extension for Visual Studio Code. https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds 
+
+1. Install Visual Studio Code, Node and NPM.
 
  
 ## Deploy the sample application 
@@ -59,7 +61,7 @@ kubectl apply –f https://raw.githubusercontent.com/DanielMeixner/DebugContaine
     git clone https://github.com/DanielMeixner/DebugContainer 
     ```
 
-1. Open the repository in Visual Studio Code 
+1. Open the folder "DebugContainer"  in Visual Studio Code.
 
 1. Modify the application. To keep things really simple, modify it to be purple instead of green.   The color is being taken from an environment variable called COLOR. 
 
@@ -100,9 +102,13 @@ kubectl apply –f https://raw.githubusercontent.com/DanielMeixner/DebugContaine
 
     ![Connect dialog in VSC](/media/connect.png)
 
-1. When asked for a service to redirect choose “svcb”. 
+1. When asked for a service to redirect choose "svcb”. 
+1. When asked for mode select "replace". 
+1. When asked for a port to redirect choose "8081". 
 
-1. It will take a few seconds and a new terminal will open. This terminal is configured to work seamless with Azure Dev Spaces.  
+
+1. It will take a few seconds and a new terminal will open. This terminal is configured to work seamless with Azure Dev Spaces.  **Hint:** On Windows you might be asked to confirm the execution of azds via dialog.
+
 
 1. Provide some environment variables. To configure your service B fully specify the color again and also specify information about the endpoint which shall be called by your service B.  
     ```
@@ -115,6 +121,10 @@ kubectl apply –f https://raw.githubusercontent.com/DanielMeixner/DebugContaine
 
 1. As you can see the configuration is using an endpoint which is valid inside of your AKS cluster – the name “svcc” . Because we are using the Azure Dev Spaces tooling the name of this backend will resolve correctly. 
 
+1. Get the dependencies for the demo app using npm.
+    ```
+    npm install
+    ```
 1. Start your application in this terminal running “node server.js” in the same terminal. 
     ```
     node server.js
