@@ -5,7 +5,7 @@
 ## Objective of the lab: 
 Dev Spaces provides a workflow which embeds local running applications under development into a chain of requests inside a Kubernates cluster running in AKS. This allows for easier debugging and speeds up your inner loop because there is no need to build and push docker images to try our your application in the context of a cluster. 
 
-![Workflow](/media/master.png)
+![Workflow](/media/scribble.png)
  
 
 
